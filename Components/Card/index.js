@@ -1,10 +1,11 @@
-import { Text, View, Image } from "react-native";
-
+import { Text, View, Image,TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import estilo from "./style";
 
 export default function Card({ preco, titulo, imagem, descricao, valorCalorico, categoria }) {
+  const navigation = useNavigation();
   return (
-    <View style={estilo.card}>
+    <TouchableOpacity style={estilo.card} onPress={()=> navigation.navigate('Details')}>
       <Image style={estilo.imagemCard} source={{ uri: imagem }} />
 
       <View style={{ marginLeft: 15, width: 150 }}>
@@ -16,6 +17,6 @@ export default function Card({ preco, titulo, imagem, descricao, valorCalorico, 
       </View>
 
       <Text style={{ fontSize: 20,marginTop:20 }}>{preco}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
